@@ -9,8 +9,12 @@
     <h1>You're So Forgetful</h1>
     <cheerpj-app src="YoureSoForgetful.jar" mainclass="Main"></cheerpj-app>
     <script>
-      window.addEventListener('load', () => {
-        cheerpjInit();
+      window.addEventListener('load', function () {
+        if (typeof cheerpjInit === "function") {
+          cheerpjInit();
+        } else {
+          console.error("cheerpjInit is not available. Script might not have loaded.");
+        }
       });
     </script>
   </body>
