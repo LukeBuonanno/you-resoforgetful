@@ -1,21 +1,17 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <title>You're So Forgetful</title>
-    <script src="https://cjrtnc.leaningtech.com/loader.js"></script>
+    <meta charset="utf-8" />
+    <title>CheerpJ test</title>
+    <script src="https://cjrtnc.leaningtech.com/3.1/cj3loader.js"></script>
   </head>
   <body>
-    <h1>You're So Forgetful</h1>
-    <cheerpj-app src="YoureSoForgetful.jar" mainclass="Main"></cheerpj-app>
     <script>
-      window.addEventListener('load', function () {
-        if (typeof cheerpjInit === "function") {
-          cheerpjInit();
-        } else {
-          console.error("cheerpjInit is not available. Script might not have loaded.");
-        }
-      });
+      (async function () {
+        await cheerpjInit();
+        cheerpjCreateDisplay(800, 600);
+        await cheerpjRunJar("YoureSoForgetful.jar");
+      })();
     </script>
   </body>
 </html>
