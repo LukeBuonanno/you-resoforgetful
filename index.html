@@ -22,13 +22,12 @@
 <body>
   <script>
     (async function () {
-      await cheerpjInit();
-      // Make the display use full window size
+      // ✅ Set Java version to 11
+      await cheerpjInit({version: 11});
       cheerpjCreateDisplay(window.innerWidth, window.innerHeight);
       await cheerpjRunJar("/app/you-resoforgetful/yoursoforgetful.jar");
     })();
 
-    // Optional: Resize dynamically if the window changes
     window.addEventListener("resize", () => {
       const canvas = document.getElementById("cheerpjDisplay");
       if (canvas) {
