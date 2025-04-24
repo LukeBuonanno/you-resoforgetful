@@ -8,9 +8,9 @@
   <body>
     <script>
       (async function () {
-        await cheerpjInit();
+        await cheerpjInit(); // No Tailscale key here
         cheerpjCreateDisplay(800, 600);
-        await cheerpjRunJar("/app/SwingHTMLBrowser.jar");
+        await cheerpjRunJar("SwingHTMLBrowser.jar");
       })();
     </script>
   </body>
