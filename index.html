@@ -12,24 +12,38 @@
         width: 100%;
         overflow: hidden;
       }
+      #cj-container {
+        width: 100vw;
+        height: 100vh;
+      }
     </style>
   </head>
   <body>
+    <div id="cj-container"></div>
+
     <script>
-      let display;
+      let jarStarted = false;
 
       async function runGame() {
         await cheerpjInit();
-        display = cheerpjCreateDisplay(window.innerWidth, window.innerHeight);
-        await cheerpjRunJar("game.jar", "Main");
+        createCheerpjDisplay();
+        if (!jarStarted) {
+          await cheerpjRunJar("game.jar", "Main");
+          jarStarted = true;
+        }
+      }
+
+      function createCheerpjDisplay() {
+        // Clear previous display if any
+        const container = document.getElementById("cj-container");
+        container.innerHTML = ""; // Clear previous canvas
+        const width = window.innerWidth;
+        const height = window.innerHeight;
+        cheerpjCreateDisplay(width, height, container);
       }
 
       window.addEventListener("resize", () => {
-        if (display) {
-          // Resize the canvas element dynamically
-          display.style.width = window.innerWidth + "px";
-          display.style.height = window.innerHeight + "px";
-        }
+        createCheerpjDisplay();
       });
 
       runGame();
