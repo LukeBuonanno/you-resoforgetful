@@ -2,51 +2,16 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>You're So Forgetful</title>
+    <title>Browser</title>
     <script src="https://cjrtnc.leaningtech.com/4.0/loader.js"></script>
-    <style>
-      html, body {
-        margin: 0;
-        padding: 0;
-        height: 100%;
-        width: 100%;
-        overflow: hidden;
-      }
-      #cj-container {
-        width: 100vw;
-        height: 100vh;
-      }
-    </style>
   </head>
   <body>
-    <div id="cj-container"></div>
-
     <script>
-      let jarStarted = false;
-
-      async function runGame() {
+      (async function () {
         await cheerpjInit();
-        createCheerpjDisplay();
-        if (!jarStarted) {
-          await cheerpjRunJar("SwingHTMLBrowser.jar", "Main");
-          jarStarted = true;
-        }
-      }
-
-      function createCheerpjDisplay() {
-        // Clear previous display if any
-        const container = document.getElementById("cj-container");
-        container.innerHTML = ""; // Clear previous canvas
-        const width = window.innerWidth;
-        const height = window.innerHeight;
-        cheerpjCreateDisplay(width, height, container);
-      }
-
-      window.addEventListener("resize", () => {
-        createCheerpjDisplay();
-      });
-
-      runGame();
+        cheerpjCreateDisplay(800, 600);
+        await cheerpjRunJar("/app/SwingHTMLBrowser.jar");
+      })();
     </script>
   </body>
 </html>
