@@ -1,1 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>You're So Forgetful</title>
+  <script src="https://cjrtnc.leaningtech.com/4.0/loader.js"></script>
+  
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      width: 100%;
+      height: 100%;
+    }
+    #cheerpjDisplay {
+      width: 100vw;
+      height: 100vh;
+      display: block;
+    }
+  @font-face {
+    font-family: 'Courier New';
+    src: url('fonts/couri.ttf') format('truetype');
+  }
 
+  @font-face {
+    font-family: 'Monospaced';
+    src: url('/app/you-resoforgetful/fonts/monospaced.ttf') format('truetype');
+  }
+
+ // @font-face {
+   // font-family: 'Dialog';
+    //src: url('/app/you-resoforgetful/fonts/Dialog.ttf') format('truetype');
+  // }
+
+  body {
+    font-family: 'Courier New', monospace;
+  }
+</style>
+
+  </style>
+</head>
+<body>
+  <script>
+    (async function () {
+      // ✅ Set Java version to 11
+      await cheerpjInit({version: 11});
+      cheerpjCreateDisplay(window.innerWidth, window.innerHeight);
+      await cheerpjRunJar("/app/you-resoforgetful/yoursoforgetful.jar");
+    })();
+
+    window.addEventListener("resize", () => {
+      const canvas = document.getElementById("cheerpjDisplay");
+      if (canvas) {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
+    });
+  </script>
+</body>
+</html>
