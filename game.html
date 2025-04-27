@@ -1,3 +1,4 @@
+<!-- game.html (no fullscreen code here) -->
 <!doctype html>
 <html lang="en">
 <head>
@@ -35,18 +36,7 @@
 </head>
 <body>
   <script>
-    async function goFullScreen() {
-      if (document.documentElement.requestFullscreen) {
-        await document.documentElement.requestFullscreen();
-      } else if (document.documentElement.webkitRequestFullscreen) { /* Safari */
-        await document.documentElement.webkitRequestFullscreen();
-      } else if (document.documentElement.msRequestFullscreen) { /* IE11 */
-        await document.documentElement.msRequestFullscreen();
-      }
-    }
-
     (async function () {
-      await goFullScreen(); // 👈 try to fullscreen first
       await cheerpjInit({version: 11});
       cheerpjCreateDisplay(window.innerWidth, window.innerHeight);
       await cheerpjRunJar("/app/you-resoforgetful/yoursoforgetful.jar");
