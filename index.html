@@ -1,72 +1,75 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>You're So Forgetful</title>
-  <script src="https://cjrtnc.leaningtech.com/4.0/loader.js"></script>
-
   <style>
-    html, body {
+    body, html {
       margin: 0;
       padding: 0;
+      height: 100%;
       overflow: hidden;
+      font-family: Arial, sans-serif;
+    }
+
+    .background {
+      position: absolute;
+      top: 0;
+      left: 0;
       width: 100%;
       height: 100%;
-    }
-    #cheerpjDisplay {
-      width: 100vw;
-      height: 100vh;
-      display: block;
-    }
-    @font-face {
-      font-family: 'Courier New';
-      src: url('fonts/couri.ttf') format('truetype');
+      background: url('background.gif') no-repeat center center/cover;
+      background-size: contain;
+      filter: blur(3px);
+      z-index: -1;
     }
 
-    @font-face {
-      font-family: 'Monospaced';
-      src: url('/app/you-resoforgetful/fonts/monospaced.ttf') format('truetype');
+    .center-button {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
     }
 
-    body {
-      font-family: 'Courier New', monospace;
+    .launch-btn {
+      background-color: #00ff00;
+      color: black;
+      border: none;
+      padding: 20px 40px;
+      font-size: 24px;
+      cursor: pointer;
+      border-radius: 10px;
+      transition: background-color 0.3s ease;
+    }
+
+    .launch-btn:hover {
+      background-color: #00cc00;
     }
   </style>
 </head>
 <body>
+  <div class="background"></div>
+  <div class="center-button">
+    <button class="launch-btn" onclick="launchGame()">
+      Launch Game
+    </button>
+  </div>
+
   <script>
-    async function forceFullscreen() {
-      try {
-        if (document.fullscreenElement == null) { // If not already fullscreen
-          if (document.documentElement.requestFullscreen) {
-            await document.documentElement.requestFullscreen();
-          } else if (document.documentElement.webkitRequestFullscreen) { 
-            await document.documentElement.webkitRequestFullscreen();
-          } else if (document.documentElement.msRequestFullscreen) { 
-            await document.documentElement.msRequestFullscreen();
-          }
-        }
-      } catch (err) {
-        console.log('Fullscreen failed:', err);
+    async function launchGame() {
+      // Try to go fullscreen when the user clicks the button
+      if (document.documentElement.requestFullscreen) {
+        await document.documentElement.requestFullscreen();
+      } else if (document.documentElement.webkitRequestFullscreen) { // Safari
+        await document.documentElement.webkitRequestFullscreen();
+      } else if (document.documentElement.msRequestFullscreen) { // IE11
+        await document.documentElement.msRequestFullscreen();
       }
+
+      // After fullscreen, navigate to the game
+      window.location.href = 'https://lukebuonanno.github.io/you-resoforgetful/game.html';
     }
-
-    (async function () {
-      await cheerpjInit({version: 11});
-      cheerpjCreateDisplay(window.innerWidth, window.innerHeight);
-      await cheerpjRunJar("/app/you-resoforgetful/yoursoforgetful.jar");
-
-      // After the Java app starts, try to fullscreen again
-      await forceFullscreen();
-    })();
-
-    window.addEventListener("resize", () => {
-      const canvas = document.getElementById("cheerpjDisplay");
-      if (canvas) {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-      }
-    });
   </script>
 </body>
 </html>
