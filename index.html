@@ -51,9 +51,15 @@
 <body>
   <div class="background"></div>
   <div class="center-button">
-    <button class="launch-btn" onclick="window.open('https://lukebuonanno.github.io/you-resoforgetful/game.html', '_blank')">
+    <button class="launch-btn" onclick="launchGame()">
       Launch Game
     </button>
   </div>
+
+  <script>
+    function launchGame() {
+      window.location.href = 'https://lukebuonanno.github.io/you-resoforgetful/game.html';
+    }
+  </script>
 </body>
 </html>
