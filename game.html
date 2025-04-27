@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <title>You're So Forgetful</title>
   <script src="https://cjrtnc.leaningtech.com/4.0/loader.js"></script>
-  
+
   <style>
     html, body {
       margin: 0;
@@ -18,32 +18,35 @@
       height: 100vh;
       display: block;
     }
-  @font-face {
-    font-family: 'Courier New';
-    src: url('fonts/couri.ttf') format('truetype');
-  }
+    @font-face {
+      font-family: 'Courier New';
+      src: url('fonts/couri.ttf') format('truetype');
+    }
 
-  @font-face {
-    font-family: 'Monospaced';
-    src: url('/app/you-resoforgetful/fonts/monospaced.ttf') format('truetype');
-  }
+    @font-face {
+      font-family: 'Monospaced';
+      src: url('/app/you-resoforgetful/fonts/monospaced.ttf') format('truetype');
+    }
 
- // @font-face {
-   // font-family: 'Dialog';
-    //src: url('/app/you-resoforgetful/fonts/Dialog.ttf') format('truetype');
-  // }
-
-  body {
-    font-family: 'Courier New', monospace;
-  }
-</style>
-
+    body {
+      font-family: 'Courier New', monospace;
+    }
   </style>
 </head>
 <body>
   <script>
+    async function goFullScreen() {
+      if (document.documentElement.requestFullscreen) {
+        await document.documentElement.requestFullscreen();
+      } else if (document.documentElement.webkitRequestFullscreen) { /* Safari */
+        await document.documentElement.webkitRequestFullscreen();
+      } else if (document.documentElement.msRequestFullscreen) { /* IE11 */
+        await document.documentElement.msRequestFullscreen();
+      }
+    }
+
     (async function () {
-      // ✅ Set Java version to 11
+      await goFullScreen(); // 👈 try to fullscreen first
       await cheerpjInit({version: 11});
       cheerpjCreateDisplay(window.innerWidth, window.innerHeight);
       await cheerpjRunJar("/app/you-resoforgetful/yoursoforgetful.jar");
