@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <title>You're So Forgetful</title>
   <script src="https://cjrtnc.leaningtech.com/4.0/loader.js"></script>
-
+  
   <style>
     html, body {
       margin: 0;
@@ -18,46 +18,35 @@
       height: 100vh;
       display: block;
     }
-    @font-face {
-      font-family: 'Courier New';
-      src: url('fonts/couri.ttf') format('truetype');
-    }
+  @font-face {
+    font-family: 'Courier New';
+    src: url('fonts/couri.ttf') format('truetype');
+  }
 
-    @font-face {
-      font-family: 'Monospaced';
-      src: url('/app/you-resoforgetful/fonts/monospaced.ttf') format('truetype');
-    }
+  @font-face {
+    font-family: 'Monospaced';
+    src: url('/app/you-resoforgetful/fonts/monospaced.ttf') format('truetype');
+  }
 
-    body {
-      font-family: 'Courier New', monospace;
-    }
+ // @font-face {
+   // font-family: 'Dialog';
+    //src: url('/app/you-resoforgetful/fonts/Dialog.ttf') format('truetype');
+  // }
+
+  body {
+    font-family: 'Courier New', monospace;
+  }
+</style>
+
   </style>
 </head>
 <body>
   <script>
-    async function forceFullscreen() {
-      try {
-        if (document.fullscreenElement == null) { // If not already fullscreen
-          if (document.documentElement.requestFullscreen) {
-            await document.documentElement.requestFullscreen();
-          } else if (document.documentElement.webkitRequestFullscreen) { 
-            await document.documentElement.webkitRequestFullscreen();
-          } else if (document.documentElement.msRequestFullscreen) { 
-            await document.documentElement.msRequestFullscreen();
-          }
-        }
-      } catch (err) {
-        console.log('Fullscreen failed:', err);
-      }
-    }
-
     (async function () {
+      // ✅ Set Java version to 11
       await cheerpjInit({version: 11});
       cheerpjCreateDisplay(window.innerWidth, window.innerHeight);
       await cheerpjRunJar("/app/you-resoforgetful/yoursoforgetful.jar");
-
-      // After the Java app starts, try to fullscreen again
-      await forceFullscreen();
     })();
 
     window.addEventListener("resize", () => {
