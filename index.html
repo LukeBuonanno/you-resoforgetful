@@ -57,17 +57,7 @@
   </div>
 
   <script>
-    async function launchGame() {
-      // Try to go fullscreen when the user clicks the button
-      if (document.documentElement.requestFullscreen) {
-        await document.documentElement.requestFullscreen();
-      } else if (document.documentElement.webkitRequestFullscreen) { // Safari
-        await document.documentElement.webkitRequestFullscreen();
-      } else if (document.documentElement.msRequestFullscreen) { // IE11
-        await document.documentElement.msRequestFullscreen();
-      }
-
-      // After fullscreen, navigate to the game
+    function launchGame() {
       window.location.href = 'https://lukebuonanno.github.io/you-resoforgetful/game.html';
     }
   </script>
