@@ -27,12 +27,6 @@
         overflow: hidden;
       }
 
-      #crt-wrapper canvas {
-        display: block;
-        width: 100% !important;
-        height: 100% !important;
-      }
-
       .crt {
         background-color: rgb(25, 25, 30);
         text-shadow: 0 0 0.2em currentColor, 1px 1px rgba(255, 0, 255, 0.5),
@@ -71,6 +65,11 @@
         );
         opacity: 0.03;
       }
+
+      /* CRT filter applied to canvas */
+      .crt-canvas {
+        filter: grayscale(100%) contrast(150%) brightness(150%) sepia(50%);
+      }
     </style>
   </head>
   <body>
@@ -79,7 +78,14 @@
     <script>
       (async function () {
         await cheerpjInit({ version: 11 });
-        cheerpjCreateDisplay(-1, -1, document.getElementById("crt-wrapper"));
+        const displayElement = cheerpjCreateDisplay(-1, -1, document.getElementById("crt-wrapper"));
+        
+        // Apply the CRT effect to the canvas element after creation
+        const canvas = displayElement.querySelector("canvas");
+        if (canvas) {
+          canvas.classList.add("crt-canvas");
+        }
+
         await cheerpjRunJar("/app/you-resoforgetful/yoursoforgetful.jar");
       })();
     </script>
