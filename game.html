@@ -2,9 +2,15 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>CheerpJ CRT Filter</title>
+    <title>CRT CheerpJ Display</title>
     <script src="https://cjrtnc.leaningtech.com/4.0/loader.js"></script>
     <style>
+      :root {
+        --crt-red: rgb(218, 49, 49);
+        --crt-green: rgb(112, 159, 115);
+        --crt-blue: rgb(40, 129, 206);
+      }
+
       html, body {
         margin: 0;
         padding: 0;
@@ -14,70 +20,66 @@
         background-color: black;
       }
 
-      #cheerpj-container {
+      #crt-wrapper {
         position: relative;
         width: 100%;
         height: 100%;
+        overflow: hidden;
       }
 
-      #cheerpj-container canvas {
+      #crt-wrapper canvas {
+        display: block;
         width: 100% !important;
         height: 100% !important;
-        display: block;
       }
 
-      .crt-overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        pointer-events: none;
-        z-index: 1000;
-        mix-blend-mode: overlay;
+      .crt {
+        background-color: rgb(25, 25, 30);
+        text-shadow: 0 0 0.2em currentColor, 1px 1px rgba(255, 0, 255, 0.5),
+          -1px -1px rgba(0, 255, 255, 0.4);
       }
 
-      .crt-overlay::before,
-      .crt-overlay::after {
+      .crt::before,
+      .crt::after {
         content: "";
         position: absolute;
-        width: 100%;
         height: 100%;
+        width: 100%;
         left: 0;
         top: 0;
-        z-index: 1000;
+        z-index: 1;
         pointer-events: none;
+        transform: translateZ(0);
         mix-blend-mode: overlay;
       }
 
-      .crt-overlay::before {
+      .crt::before {
         background: repeating-linear-gradient(
-          rgba(218, 49, 49, 0.05) 0px,
-          rgba(112, 159, 115, 0.05) 2px,
-          rgba(40, 129, 206, 0.05) 4px
+          var(--crt-red) 0px,
+          var(--crt-green) 2px,
+          var(--crt-blue) 4px
         );
+        opacity: 0.03;
       }
 
-      .crt-overlay::after {
+      .crt::after {
         background: repeating-linear-gradient(
           90deg,
-          rgba(218, 49, 49, 0.03) 1px,
-          rgba(112, 159, 115, 0.03) 2px,
-          rgba(40, 129, 206, 0.03) 3px
+          var(--crt-red) 1px,
+          var(--crt-green) 2px,
+          var(--crt-blue) 3px
         );
+        opacity: 0.03;
       }
     </style>
   </head>
   <body>
-    <div id="cheerpj-container">
-      <!-- CRT Overlay -->
-      <div class="crt-overlay"></div>
-    </div>
+    <div id="crt-wrapper" class="crt"></div>
 
     <script>
       (async function () {
         await cheerpjInit({ version: 11 });
-        cheerpjCreateDisplay(-1, -1, document.getElementById("cheerpj-container"));
+        cheerpjCreateDisplay(-1, -1, document.getElementById("crt-wrapper"));
         await cheerpjRunJar("/app/you-resoforgetful/yoursoforgetful.jar");
       })();
     </script>
