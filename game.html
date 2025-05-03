@@ -1,42 +1,12 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <title>You're So Forgetful</title>
-  <script src="https://cjrtnc.leaningtech.com/4.0/loader.js"></script>
-
-  <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      overflow: hidden;
-      width: 100vw;
-      height: 100vh;
-    }
-
-    canvas#cheerpjDisplay {
-      display: block;
-      width: 100vw;
-      height: 100vh;
-    }
-
-    @font-face {
-      font-family: 'Courier New';
-      src: url('fonts/couri.ttf') format('truetype');
-    }
-
-    @font-face {
-      font-family: 'Monospaced';
-      src: url('/app/you-resoforgetful/fonts/monospaced.ttf') format('truetype');
-    }
-
-    body {
-      font-family: 'Courier New', monospace;
-    }
-  </style>
-</head>
-<body>
-  <script>
+  <head>
+    <meta charset="utf-8" />
+    <title>Browser</title>
+    <script src="https://cjrtnc.leaningtech.com/4.0/loader.js"></script>
+  </head>
+  <body>
+      <script>
     (async function () {
       await cheerpjInit({ version: 11 });
 
@@ -54,10 +24,7 @@
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
       };
-
-      resizeCanvas();
-      window.addEventListener("resize", resizeCanvas);
-    })();
-  </script>
-</body>
+      })();
+    </script>
+  </body>
 </html>
