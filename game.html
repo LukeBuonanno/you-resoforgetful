@@ -77,15 +77,21 @@
 
     <script>
       (async function () {
+        // Initialize CheerpJ
         await cheerpjInit({ version: 11 });
+        
+        // Create the display inside the wrapper
         const displayElement = cheerpjCreateDisplay(-1, -1, document.getElementById("crt-wrapper"));
         
-        // Apply the CRT effect to the canvas element after creation
+        // Wait for the canvas to be available
         const canvas = displayElement.querySelector("canvas");
+        
+        // If canvas is found, apply the CRT effect using the class
         if (canvas) {
           canvas.classList.add("crt-canvas");
         }
 
+        // Run the game after the canvas is ready
         await cheerpjRunJar("/app/you-resoforgetful/yoursoforgetful.jar");
       })();
     </script>
