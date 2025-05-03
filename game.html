@@ -83,13 +83,16 @@
         // Create the display inside the wrapper
         const displayElement = cheerpjCreateDisplay(-1, -1, document.getElementById("crt-wrapper"));
         
-        // Wait for the canvas to be available
-        const canvas = displayElement.querySelector("canvas");
-        
-        // If canvas is found, apply the CRT effect using the class
-        if (canvas) {
-          canvas.classList.add("crt-canvas");
-        }
+        // Use a delay to ensure the canvas is fully created and available
+        setTimeout(() => {
+          // Find the canvas element created by CheerpJ
+          const canvas = displayElement.querySelector("canvas");
+          
+          if (canvas) {
+            // Apply the CRT effect using the class
+            canvas.classList.add("crt-canvas");
+          }
+        }, 1000); // Adjust the timeout if necessary
 
         // Run the game after the canvas is ready
         await cheerpjRunJar("/app/you-resoforgetful/yoursoforgetful.jar");
