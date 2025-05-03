@@ -9,7 +9,14 @@
     <script>
       (async function () {
         await cheerpjInit({ version: 11 });
-        cheerpjCreateDisplay(1000, 1000);
+        const displayElement = cheerpjCreateDisplay(-1, -1, document.body);
+        if (displayElement.requestFullscreen) {
+          displayElement.requestFullscreen();
+        } else if (displayElement.webkitRequestFullscreen) { /* Safari */
+          displayElement.webkitRequestFullscreen();
+        } else if (displayElement.msRequestFullscreen) { /* IE11 */
+          displayElement.msRequestFullscreen();
+        }:contentReference[oaicite:29]{index=29}
         await cheerpjRunJar("/app/you-resoforgetful/yoursoforgetful.jar");
             })();
     </script>
