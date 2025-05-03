@@ -10,15 +10,19 @@
       (async function () {
         await cheerpjInit({ version: 11 });
         const displayElement = cheerpjCreateDisplay(-1, -1, document.body);
+        
+        // Request fullscreen
         if (displayElement.requestFullscreen) {
           displayElement.requestFullscreen();
-        } else if (displayElement.webkitRequestFullscreen) { /* Safari */
+        } else if (displayElement.webkitRequestFullscreen) { // Safari
           displayElement.webkitRequestFullscreen();
-        } else if (displayElement.msRequestFullscreen) { /* IE11 */
+        } else if (displayElement.msRequestFullscreen) { // IE11
           displayElement.msRequestFullscreen();
-        }:contentReference[oaicite:29]{index=29}
+        }
+
+        // Run your JAR
         await cheerpjRunJar("/app/you-resoforgetful/yoursoforgetful.jar");
-            })();
+      })();
     </script>
   </body>
 </html>
