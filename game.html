@@ -9,8 +9,9 @@
     <script>
       (async function () {
         await cheerpjInit({ version: 11 });
-        cheerpjCreateDisplay(800, 600);
+        cheerpjCreateDisplay(-1, -1, document.body);
         await cheerpjRunJar("/app/you-resoforgetful/yoursoforgetful-cleaned.jar");
+        
       })();
     </script>
   </body>
