@@ -8,10 +8,11 @@
   <body>
     <script>
       (async function () {
-        await cheerpjInit({       
-      });
+        await cheerpjInit({
+          jvm: "11"  // Explicitly use CheerpJ 11
+        });
         cheerpjCreateDisplay(800, 600);
-        await cheerpjRunJar("/app/you-resoforgetful/yoursoforgetful.jar");
+        await cheerpjRunJar("/app/you-resoforgetful/yoursoforgetful-cleaned.jar");
       })();
     </script>
   </body>
