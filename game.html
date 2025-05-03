@@ -2,9 +2,15 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title></title>
+    <title>CRT CheerpJ Display</title>
     <script src="https://cjrtnc.leaningtech.com/4.0/loader.js"></script>
     <style>
+      :root {
+        --crt-red: rgb(218, 49, 49);
+        --crt-green: rgb(112, 159, 115);
+        --crt-blue: rgb(40, 129, 206);
+      }
+
       html, body {
         margin: 0;
         padding: 0;
@@ -13,13 +19,67 @@
         overflow: hidden;
         background-color: black;
       }
+
+      #crt-wrapper {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+      }
+
+      #crt-wrapper canvas {
+        display: block;
+        width: 100% !important;
+        height: 100% !important;
+      }
+
+      .crt {
+        background-color: rgb(25, 25, 30);
+        text-shadow: 0 0 0.2em currentColor, 1px 1px rgba(255, 0, 255, 0.5),
+          -1px -1px rgba(0, 255, 255, 0.4);
+      }
+
+      .crt::before,
+      .crt::after {
+        content: "";
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        left: 0;
+        top: 0;
+        z-index: 1;
+        pointer-events: none;
+        transform: translateZ(0);
+        mix-blend-mode: overlay;
+      }
+
+      .crt::before {
+        background: repeating-linear-gradient(
+          var(--crt-red) 0px,
+          var(--crt-green) 2px,
+          var(--crt-blue) 4px
+        );
+        opacity: 0.03;
+      }
+
+      .crt::after {
+        background: repeating-linear-gradient(
+          90deg,
+          var(--crt-red) 1px,
+          var(--crt-green) 2px,
+          var(--crt-blue) 3px
+        );
+        opacity: 0.03;
+      }
     </style>
   </head>
   <body>
+    <div id="crt-wrapper" class="crt"></div>
+
     <script>
       (async function () {
         await cheerpjInit({ version: 11 });
-        cheerpjCreateDisplay(-1, -1, document.body);
+        cheerpjCreateDisplay(-1, -1, document.getElementById("crt-wrapper"));
         await cheerpjRunJar("/app/you-resoforgetful/yoursoforgetful.jar");
       })();
     </script>
