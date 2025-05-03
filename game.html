@@ -2,33 +2,15 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title></title>
+    <title>Browser</title>
     <script src="https://cjrtnc.leaningtech.com/4.0/loader.js"></script>
   </head>
-  <body style="margin:0;">
+  <body>
     <script>
       (async function () {
-        // Initialize CheerpJ
-        await cheerpjInit({ version: 11 });
-
-        // Create and insert canvas
-        const canvas = document.createElement("canvas");
-        canvas.id = "cheerpjDisplay";
-        canvas.style.display = "block";
-        document.body.appendChild(canvas);
-
-        // Resize function
-        const resizeCanvas = () => {
-          canvas.width = window.innerWidth;
-          canvas.height = window.innerHeight;
-        };
-        window.addEventListener("resize", resizeCanvas);
-        resizeCanvas(); // initial call
-
-        // Create the display
-        cheerpjCreateDisplay(canvas);
-
-        // Run the JAR — double-check this path!
+        await cheerpjInit({       
+      });
+        cheerpjCreateDisplay(800, 600);
         await cheerpjRunJar("/app/you-resoforgetful/yoursoforgetful.jar");
       })();
     </script>
