@@ -1,35 +1,75 @@
-<body style="margin: 0; padding: 0; height: 100%; overflow: hidden; font-family: Arial, sans-serif;">
-  <main style="
-    background-color: rgb(25, 25, 30);
-    color: rgba(255, 255, 255, 0.75);
-    font-size: 1.5rem;
-    font-family: 'Courier New', monospace;
-    min-height: 100%;
-    height: 100vh;
-    height: 100dvh;
-    position: relative;
-    text-shadow: 0 0 0.2em currentColor, 1px 1px rgba(255, 0, 255, 0.5), -1px -1px rgba(0, 255, 255, 0.4);
-  ">
-    <div style="padding-top: 2rem; padding-left: 1rem; display: inline-block; white-space: nowrap;">
-      <span style="
-        animation: typewriter 1s steps(14) 1s 1 normal both;
-        line-height: 1;
-        margin: 0;
-        display: inline-block;
-        white-space: nowrap;
-        overflow-x: hidden;
-      ">
-     <span style="color: green;">404: youresoforgetful.jar not found</span>;
-      <br>
-        <br>
-      <span style="color: green;">faq coming soon, subscribe to my newsletter to get </span>
-       <span style="color: green;">sporadic and infrequent updates.</span>
-      <span style="display: inline-block; animation: blinkTextCursor 500ms infinite normal;">_</span>
-    </div>
-    
-    <!-- CRT scanline overlays -->
-    <div style="
-      content: '';
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>404 Terminal Page</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: Arial, sans-serif;
+      overflow: hidden;
+    }
+
+    main {
+      background-color: rgb(25, 25, 30);
+      color: rgba(255, 255, 255, 0.75);
+      font-size: 1.5rem;
+      font-family: 'Courier New', monospace;
+      height: 100vh;
+      position: relative;
+      text-shadow: 0 0 0.2em currentColor,
+                   1px 1px rgba(255, 0, 255, 0.5),
+                  -1px -1px rgba(0, 255, 255, 0.4);
+      z-index: 2;
+    }
+
+        .form-wrapper {
+      position: absolute;
+      bottom: 2rem;
+      left: 1rem;
+      z-index: 3;
+      color: white;
+      font-family: 'Courier New', monospace;
+      text-shadow: 0 0 0.2em currentColor,
+                   1px 1px rgba(255, 0, 255, 0.5),
+                  -1px -1px rgba(0, 255, 255, 0.4);
+    }
+
+    input, button {
+      background-color: black;
+      border: 1px solid lime;
+      color: lime;
+      padding: 0.5rem;
+      margin-left: 0.5rem;
+      font-family: 'Courier New', monospace;
+      font-size: 1rem;
+      text-shadow: 0 0 0.2em currentColor,
+                   1px 1px rgba(255, 0, 255, 0.5),
+                  -1px -1px rgba(0, 255, 255, 0.4);
+    }
+
+    button:hover, input:focus {
+      box-shadow: 0 0 10px lime, 0 0 20px cyan;
+      outline: none;
+    }
+.typewriter {
+      display: inline-block;
+      overflow: hidden;
+      white-space: nowrap;
+      border-right: 0.15em solid green;
+      animation: typewriter 4s steps(100) 1s 1 normal both;
+    }
+
+    .cursor {
+      display: inline-block;
+      animation: blinkTextCursor 500ms infinite normal;
+    }
+
+    .crt-horizontal,
+    .crt-vertical {
       position: absolute;
       height: 100%;
       width: 100%;
@@ -38,67 +78,113 @@
       mix-blend-mode: overlay;
       z-index: 1;
       pointer-events: none;
+      transform: translateZ(0);
+    }
+
+    .crt-horizontal {
       background: repeating-linear-gradient(
         rgb(218, 49, 49) 0px,
         rgb(112, 159, 115) 2px,
         rgb(40, 129, 206) 4px
       );
-      transform: translateZ(0);
-    "></div>
-    <div style="
-      content: '';
-      position: absolute;
-      height: 100%;
-      width: 100%;
-      left: 0;
-      top: 0;
-      mix-blend-mode: overlay;
-      z-index: 1;
-      pointer-events: none;
+    }
+
+    .crt-vertical {
       background: repeating-linear-gradient(
         90deg,
         rgb(218, 49, 49) 1px,
         rgb(112, 159, 115) 2px,
         rgb(40, 129, 206) 3px
       );
-      transform: translateZ(0);
-    "></div>
-  </main>
+    }
 
-  <!-- Optional background and launch button -->
-  <div style="
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: url('background.gif') no-repeat center center/cover;
-    background-size: contain;
-    filter: blur(3px);
-    z-index: -1;
-  "></div>
+    .background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('background.gif') no-repeat center center / contain;
+      filter: blur(3px);
+      z-index: 0;
+    }
 
-<form
-  action="https://formspree.io/f/mgvywkdp"
-  method="POST"
->
-  <label>
-    Your email:
-    <input type="email" name="email">
-  </label>
-  <button type="submit">Sign-Up</button>
-</form>
+    .form-wrapper {
+      position: absolute;
+      bottom: 2rem;
+      left: 1rem;
+      z-index: 3;
+      color: white;
+    }
 
-  <!-- Animations must remain in <style> or be moved to JS; they cannot be done purely inline -->
-  <style>
+    input, button {
+      margin-left: 0.5rem;
+      font-family: 'Courier New', monospace;
+      font-size: 1rem;
+    }
+
     @keyframes typewriter {
       from { width: 0; }
       to { width: 100%; }
     }
 
     @keyframes blinkTextCursor {
-      from { opacity: 0; }
-      to { opacity: 1; }
+      0% { opacity: 1; }
+      50% { opacity: 0; }
+      100% { opacity: 1; }
     }
   </style>
+</head>
+
+<body>
+  <div class="background"></div>
+
+  <main>
+   <div style="padding-top: 2rem; padding-left: 1rem; display: inline-block;">
+  <span id="line1" style="color: green;"></span><br>
+  <span id="line2" style="color: green;"></span>
+  <span class="cursor">_</span>
+</div>
+
+<script>
+  const text1 = "404: youresoforgetful.jar not found";
+  const text2 = "faq coming soon, subscribe to my newsletter to get sporadic and infrequent updates.";
+  const line1 = document.getElementById("line1");
+  const line2 = document.getElementById("line2");
+
+  function typeText(element, text, delay = 50, callback = () => {}) {
+    let i = 0;
+    const typer = setInterval(() => {
+      element.textContent += text[i];
+      i++;
+      if (i === text.length) {
+        clearInterval(typer);
+        callback();
+      }
+    }, delay);
+  }
+
+  typeText(line1, text1, 50, () => {
+    setTimeout(() => {
+      typeText(line2, text2, 40);
+    }, 1000); // wait 1s before starting second line
+  });
+</script>
+
+
+    <!-- CRT overlays -->
+    <div class="crt-horizontal"></div>
+    <div class="crt-vertical"></div>
+
+    <!-- Email Signup Form -->
+    <form class="form-wrapper" action="https://formspree.io/f/mgvywkdp" method="POST">
+    <label style="color: lime;">
+  Your email:
+  <input type="email" name="email" required>
+</label>
+
+      <button type="submit">Sign-Up</button>
+    </form>
+  </main>
 </body>
+</html>
