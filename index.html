@@ -1,46 +1,85 @@
-<body>
-  <main class="crt">
-    <div class="wrapper">
-      <span class="code">
-        <span class="pink">import</span> <span class="lightblue">{ home }</span> from <span class="yellow">'./_site/home/'</span>;</span><span class="cursor">_</span>
-
+<body style="margin: 0; padding: 0; height: 100%; overflow: hidden; font-family: Arial, sans-serif;">
+  <main style="
+    background-color: rgb(25, 25, 30);
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 1.5rem;
+    font-family: 'Courier New', monospace;
+    min-height: 100%;
+    height: 100vh;
+    height: 100dvh;
+    position: relative;
+    text-shadow: 0 0 0.2em currentColor, 1px 1px rgba(255, 0, 255, 0.5), -1px -1px rgba(0, 255, 255, 0.4);
+  ">
+    <div style="padding-top: 2rem; padding-left: 1rem; display: inline-block; white-space: nowrap;">
+      <span style="
+        animation: typewriter 1s steps(14) 1s 1 normal both;
+        line-height: 1;
+        margin: 0;
+        display: inline-block;
+        white-space: nowrap;
+        overflow-x: hidden;
+      ">
+        <span style="color: pink;">import</span>
+        <span style="color: lightblue;">{ home }</span> 
+        from 
+        <span style="color: yellow;">'./_site/home/'</span>;
+      </span>
+      <span style="display: inline-block; animation: blinkTextCursor 500ms infinite normal;">_</span>
     </div>
-    </div>
-<!-- <!DOCTYPE html>
-<html lang="en">
- <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>You're So Forgetful</title>
-  <style>
-    body, html {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      overflow: hidden;
-      font-family: Arial, sans-serif;
-    }
-
-    .background {
+    
+    <!-- CRT scanline overlays -->
+    <div style="
+      content: '';
       position: absolute;
-      top: 0;
-      left: 0;
+      height: 100%;
       width: 100%;
-      height: 100%;
-      background: url('background.gif') no-repeat center center/cover;
-      background-size: contain;
-      filter: blur(3px);
-      z-index: -1;
-    }
-
-    .center-button {
+      left: 0;
+      top: 0;
+      mix-blend-mode: overlay;
+      z-index: 1;
+      pointer-events: none;
+      background: repeating-linear-gradient(
+        rgb(218, 49, 49) 0px,
+        rgb(112, 159, 115) 2px,
+        rgb(40, 129, 206) 4px
+      );
+      transform: translateZ(0);
+    "></div>
+    <div style="
+      content: '';
       position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
+      height: 100%;
+      width: 100%;
+      left: 0;
+      top: 0;
+      mix-blend-mode: overlay;
+      z-index: 1;
+      pointer-events: none;
+      background: repeating-linear-gradient(
+        90deg,
+        rgb(218, 49, 49) 1px,
+        rgb(112, 159, 115) 2px,
+        rgb(40, 129, 206) 3px
+      );
+      transform: translateZ(0);
+    "></div>
+  </main>
 
-    .launch-btn {
+  <!-- Optional background and launch button -->
+  <div style="
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('background.gif') no-repeat center center/cover;
+    background-size: contain;
+    filter: blur(3px);
+    z-index: -1;
+  "></div>
+
+  <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+    <button style="
       background-color: #00ff00;
       color: black;
       border: none;
@@ -49,17 +88,7 @@
       cursor: pointer;
       border-radius: 10px;
       transition: background-color 0.3s ease;
-    }
-
-    .launch-btn:hover {
-      background-color: #00cc00;
-    }
-  </style>
-</head>
-<body>
-  <div class="background"></div>
-  <div class="center-button">
-    <button class="launch-btn" onclick="launchGame()">
+    " onclick="launchGame()">
       Launch Game
     </button>
   </div>
@@ -69,6 +98,17 @@
       window.location.href = 'https://lukebuonanno.github.io/you-resoforgetful/game.html';
     }
   </script>
+
+  <!-- Animations must remain in <style> or be moved to JS; they cannot be done purely inline -->
+  <style>
+    @keyframes typewriter {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+
+    @keyframes blinkTextCursor {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+  </style>
 </body>
-</html>
--->
