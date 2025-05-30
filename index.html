@@ -75,26 +75,21 @@
     z-index: -1;
   "></div>
 
-  <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
-    <button style="
-      background-color: #00ff00;
-      color: black;
-      border: none;
-      padding: 20px 40px;
-      font-size: 24px;
-      cursor: pointer;
-      border-radius: 10px;
-      transition: background-color 0.3s ease;
-    " onclick="launchGame()">
-      Launch Game
-    </button>
-  </div>
-
-  <script>
-    function launchGame() {
-      window.location.href = 'https://lukebuonanno.github.io/you-resoforgetful/game.html';
-    }
-  </script>
+<form
+  action="https://formspree.io/f/mgvywkdp"
+  method="POST"
+>
+  <label>
+    Your email:
+    <input type="email" name="email">
+  </label>
+  <label>
+    Your message:
+    <textarea name="message"></textarea>
+  </label>
+  <!-- your other form fields go here -->
+  <button type="submit">Send</button>
+</form>
 
   <!-- Animations must remain in <style> or be moved to JS; they cannot be done purely inline -->
   <style>
